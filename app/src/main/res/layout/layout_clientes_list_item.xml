@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_clientes"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintEnd_toStartOf="@+id/clientes_checkBox"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/client_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/pind_green"
+            android:textStyle="bold"
+            tools:text="Cliente X" />
+
+        <LinearLayout
+            android:id="@+id/ly_primeira_compra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <TextView
+                android:id="@+id/primeira_compra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:text="@string/primeira_compra_"
+                android:textColor="@color/pind_green"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/primeira_compra_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="23/10/2023" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:layout_marginBottom="7dp"
+                android:text="@string/ltima_compra"
+                android:textColor="@color/pind_green"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ultima_compra_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="25/12/2022" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <Button
+                android:id="@+id/finalizados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:layout_marginEnd="10dp"
+                android:text="Finalizados"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/em_andamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:backgroundTint="#E9BD22"
+                tools:text="Em andamento"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:alpha="0.5"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <CheckBox
+        android:id="@+id/clientes_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Pind</string>
+    <string name="produto">Produto:</string>
+    <string name="quantidade">Quantidade:</string>
+    <string name="valor_total">Valor total R$</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="remover">Remover</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="clientes">Clientes</string>
+    <string name="primeira_compra">Primeira compra</string>
+    <string name="primeira_compra_">Primeira compra:</string>
+    <string name="ltima_compra">Última compra:</string>
+    <string name="nome_do_cliente">Nome do cliente:</string>
+    <string name="cnpj">CNPJ:</string>
+    <string name="e_mail">E-mail:</string>
+    <string name="telefone">Telefone:</string>
+    <string name="cep">CEP:</string>
+    <string name="rua">Rua:</string>
+    <string name="bairro">Bairro:</string>
+    <string name="cidade">Cidade:</string>
+    <string name="estado">Estado:</string>
+    <string name="adicionar_cliente">Adicionar cliente</string>
+</resources>
