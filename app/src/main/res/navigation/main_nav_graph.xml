@@ -13,11 +13,19 @@
         <action
             android:id="@+id/action_homeFragment_to_vendasFragment"
             app:destination="@id/vendasFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_clientesFragment"
+            app:destination="@id/clientesFragment" />
     </fragment>
     <fragment
         android:id="@+id/vendasFragment"
         android:name="br.com.example.pind.VendasFragment"
         android:label="VendasFragment"
         tools:layout="@layout/activity_vendas"/>
+    <fragment
+        android:id="@+id/clientesFragment"
+        android:name="br.com.example.pind.ClientesFragment"
+        android:label="ClientesFragment"
+        tools:layout="@layout/activity_clientes"/>
 
 </navigation>

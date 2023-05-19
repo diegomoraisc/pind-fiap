@@ -40,6 +40,7 @@ class HomeFragment : Fragment() {
             when (menuItem.id) {
                 0 -> showEstoqueActivity()
                 2 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToVendasFragment())
+                4 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToClientesFragment())
             }
         }
 

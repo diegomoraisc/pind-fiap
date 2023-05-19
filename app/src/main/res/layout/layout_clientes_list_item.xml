@@ -88,7 +88,7 @@
             app:layout_constraintVertical_chainStyle="packed">
 
             <Button
-                android:id="@+id/finalizados"
+                android:id="@+id/btn_finalizados"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
@@ -98,12 +98,12 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/em_andamento"
+                android:id="@+id/btn_em_andamento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:backgroundTint="#E9BD22"
-                tools:text="Em andamento"
+                android:text="Em andamento"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 

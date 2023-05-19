@@ -18,7 +18,7 @@ class EstoqueActivity : AppCompatActivity() {
         val btnLogout = findViewById<ImageView>(R.id.iv_nav_logout)
         val btnAdd = findViewById<FloatingActionButton>(R.id.add_btn)
         val btnRemoveEstoque = findViewById<FloatingActionButton>(R.id.remove_btn)
-        val dialog = Dialog()
+        val estoqueDialog = EstoqueDialog()
         val estoqueList = mutableListOf(
             EstoqueListItem("Exemplo", "0kg"),
         )
@@ -37,10 +37,10 @@ class EstoqueActivity : AppCompatActivity() {
         }
 
         btnAdd.setOnClickListener {
-            dialog.show(supportFragmentManager, "dialogAdd")
+            estoqueDialog.show(supportFragmentManager, "dialogAdd")
         }
 
-        dialog.onAddItem = {
+        estoqueDialog.onAddItem = {
             estoqueList.add(it)
             estoqueAdapter.notifyItemInserted(estoqueList.indexOf(it))
         }

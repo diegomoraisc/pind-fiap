@@ -1,8 +1,5 @@
 package br.com.example.pind
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -15,7 +12,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatDialogFragment
 
 
-class Dialog : AppCompatDialogFragment() {
+class EstoqueDialog : AppCompatDialogFragment() {
 
     var onAddItem: ((item: EstoqueListItem) -> Unit)? = null
 
