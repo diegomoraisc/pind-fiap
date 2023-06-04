@@ -10,16 +10,17 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 
-class ClientesListAdapter(private val dataList: List<ClientesListItem>) :
+class ClientesListAdapter(private val dataList: List<Cliente>) :
     RecyclerView.Adapter<ClientesListAdapter.ClientesViewHolder>() {
 
 
-    var onClickFinalizados: ((cliente: ClientesListItem) -> Unit)? = null
-    var onClickEmAndamento: ((cliente: ClientesListItem) -> Unit)? = null
+    var onItemClicked: ((cliente: Cliente) -> Unit)? = null
+    var onClickFinalizados: ((cliente: Cliente) -> Unit)? = null
+    var onClickEmAndamento: ((cliente: Cliente) -> Unit)? = null
     var onCheckBoxEnabled: (() -> Unit)? = null
     var isEnabled: Boolean = false
     var clearCheckBox: Boolean = false
-    val selectedList = mutableListOf<ClientesListItem>()
+    val selectedList = mutableListOf<Cliente>()
 
     inner class ClientesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nomeCliente = itemView.findViewById<TextView>(R.id.client_name)
@@ -31,7 +32,7 @@ class ClientesListAdapter(private val dataList: List<ClientesListItem>) :
         val checkBox = itemView.findViewById<CheckBox>(R.id.clientes_checkBox)
 
 
-        fun bind(item: ClientesListItem) {
+        fun bind(item: Cliente) {
             card.setOnLongClickListener {
                 isEnabled = true
                 checkBox.isVisible = isEnabled
@@ -48,6 +49,9 @@ class ClientesListAdapter(private val dataList: List<ClientesListItem>) :
                         selectedList.remove(item)
                     }
                 }
+            }
+            itemView.setOnClickListener {
+                onItemClicked?.invoke(item)
             }
             btnFinalizados.setOnClickListener {
                 onClickFinalizados?.invoke(item)

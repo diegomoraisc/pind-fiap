@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
         adapter.onItemClick = { menuItem ->
             when (menuItem.id) {
                 0 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToEstoqueFragment())
+                1 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPedidosFragment())
                 2 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToVendasFragment())
                 4 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToClientesFragment())
             }

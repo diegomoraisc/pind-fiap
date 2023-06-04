@@ -11,9 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 
 class ClientesFragment : Fragment() {
-    var btnAdd: Button? = null
-    var btnRemove: Button? = null
-    var btnCancel: Button? = null
+
+    private var btnAdd: Button? = null
+    private var btnRemove: Button? = null
+    private var btnCancel: Button? = null
+
+    private var clientesDialog: ClientesDialog? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,29 +28,36 @@ class ClientesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_clientes)
-        val clientesDialog = ClientesDialog()
+
         btnAdd = view.findViewById(R.id.btn_add_clientes)
         btnRemove = view.findViewById(R.id.btn_remove_clientes)
         btnCancel = view.findViewById(R.id.btn_cancel_clientes)
+
+        //TODO adicionar os dados mockados do cliente após alterar o Objeto "Cliente.kt"
         val clientesList = mutableListOf(
-            ClientesListItem(0, "Endrew", "11/09/2022", "18/02/2023"),
-            ClientesListItem(0, "Endrew", "11/09/2022", "18/02/2023"),
-            ClientesListItem(0, "Endrew", "11/09/2022", "18/02/2023"),
-            ClientesListItem(0, "Endrew", "11/09/2022", "18/02/2023"),
-            ClientesListItem(0, "Endrew", "11/09/2022", "18/02/2023")
+            Cliente(0, "Endrew", "11/09/2022", "18/02/2023"),
+            Cliente(0, "Diego", "11/09/2022", "18/02/2023"),
+            Cliente(0, "Roberval", "11/09/2022", "18/02/2023"),
+            Cliente(0, "Zé Da Manga", "11/09/2022", "18/02/2023"),
+            Cliente(0, "Aristovaldo", "11/09/2022", "18/02/2023")
         )
+
         val clientesAdapter = ClientesListAdapter(clientesList)
         recyclerView.adapter = clientesAdapter
+
         clientesAdapter.onCheckBoxEnabled = {
             clientesAdapter.notifyItemRangeChanged(0, clientesList.size)
             setButtonVisibility(true)
         }
-
+        clientesAdapter.onItemClicked = {
+            clientesDialog = ClientesDialog.newInstance(it)
+            clientesDialog?.show(requireActivity().supportFragmentManager, "clienteDialog")
+        }
         clientesAdapter.onClickFinalizados = {
-            Toast.makeText(requireContext(), it.nomeCliente, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Finalizados", Toast.LENGTH_SHORT).show()
         }
         clientesAdapter.onClickEmAndamento = {
-            Toast.makeText(requireContext(), it.nomeCliente, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Em Andamento", Toast.LENGTH_SHORT).show()
         }
         btnCancel?.setOnClickListener {
             clientesAdapter.isEnabled = false
@@ -62,11 +72,12 @@ class ClientesFragment : Fragment() {
             clientesAdapter.selectedList.forEach{ item ->
                 val position = clientesList.indexOf(item)
                 clientesList.removeAt(position)
+                clientesAdapter.notifyItemRemoved(position)
             }
-            clientesAdapter.notifyItemRangeRemoved(0, clientesList.size)
         }
         btnAdd?.setOnClickListener {
-            clientesDialog.show(requireActivity().supportFragmentManager, "clienteDialog")
+            clientesDialog = ClientesDialog.newInstance()
+            clientesDialog?.show(requireActivity().supportFragmentManager, "clienteDialog")
         }
 
         //TODO Adicionar informações do cliente no banco
@@ -76,7 +87,7 @@ class ClientesFragment : Fragment() {
         }*/
     }
 
-    fun setButtonVisibility (isVisible: Boolean){
+    private fun setButtonVisibility (isVisible: Boolean){
         btnRemove?.isVisible = isVisible
         btnCancel?.isVisible = isVisible
         btnAdd?.isVisible = !isVisible

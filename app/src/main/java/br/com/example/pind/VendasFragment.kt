@@ -52,12 +52,12 @@ class VendasFragment:Fragment() {
             vendasAdapter.selectedList.forEach{ item ->
                 val position = vendasList.indexOf(item)
                 vendasList.removeAt(position)
+                vendasAdapter.notifyItemRemoved(position)
             }
-            vendasAdapter.notifyItemRangeRemoved(0, vendasList.size)
         }
     }
 
-    fun setButtonVisibility (isVisible: Boolean){
+    private fun setButtonVisibility (isVisible: Boolean){
         btnRemove?.isVisible = isVisible
         btnCancel?.isVisible = isVisible
         btnAdd?.isVisible = !isVisible

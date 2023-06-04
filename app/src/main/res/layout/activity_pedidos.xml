@@ -10,52 +10,54 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:paddingVertical="5dp"
         android:text="Pedidos"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/add_btn"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:src="@drawable/baseline_add_24"
-        android:backgroundTint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cv_graphic"
+        app:layout_constraintStart_toStartOf="@+id/cv_graphic"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/remove_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:backgroundTint="@color/white"
-        app:tint="@color/pind_red"
-        android:src="@drawable/baseline_close_24"
-        app:layout_constraintEnd_toEndOf="@+id/add_btn"
-        app:layout_constraintStart_toStartOf="@+id/add_btn"
-        app:layout_constraintTop_toBottomOf="@+id/add_btn"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_graphic"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:layout_editor_absoluteX="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Grafico super foda"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lista_pedidos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/background_estoque_list"
-        android:paddingTop="10dp"
-        android:layout_marginTop="10dp"
+        android:paddingTop="20dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remove_btn"
+        app:layout_constraintTop_toBottomOf="@+id/cv_graphic"
         app:layout_constraintVertical_bias="1">
-
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_pedidos"

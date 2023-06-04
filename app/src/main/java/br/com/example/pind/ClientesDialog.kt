@@ -10,12 +10,21 @@ import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatDialogFragment
-import kotlin.random.Random
+import androidx.core.view.isVisible
 
 
 class ClientesDialog : AppCompatDialogFragment() {
 
-    var onAddItem: ((item: ClientesListItem) -> Unit)? = null
+    companion object {
+        fun newInstance(
+            cliente: Cliente? = null
+        ) = ClientesDialog().apply {
+            this.cliente = cliente
+        }
+    }
+
+    var onAddItem: ((item: Cliente) -> Unit)? = null
+    private var cliente: Cliente? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +46,19 @@ class ClientesDialog : AppCompatDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val btnAddCliente = view.findViewById<Button>(R.id.btn_add_cliente)
+
+        // variável necessária para poder pegar o texto do campo de texto.
         val textNomeCliente = view.findViewById<EditText>(R.id.cliente_name_id)
         val textCnpj = view.findViewById<EditText>(R.id.cliente_cnpj_id)
 
-        //TODO Adicionar as outras variáveis
+        //TODO Adicionar as outras variáveis de campo de texto.
+
+        if (cliente != null) {
+            textNomeCliente.setText(cliente?.nomeCliente)
+            //TODO Adicionar os outros textos quando tiver as variáveis.
+
+            btnAddCliente.isVisible = false
+        }
 
         btnAddCliente.setOnClickListener {
           //onAddItem?.invoke(ClientesListItem(Random.nextInt(), textNomeCliente.text.toString(), textCnpj.text.toString()))

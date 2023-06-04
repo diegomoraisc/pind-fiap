@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.NO_POSITION
 
 class VendasListAdapter(private val dataList: List<VendasListItem>) :
     RecyclerView.Adapter<VendasListAdapter.VendasViewHolder>() {
@@ -39,7 +40,9 @@ class VendasListAdapter(private val dataList: List<VendasListItem>) :
                 if (isEnabled) {
                     if (!checkBox.isChecked) {
                         checkBox.isChecked = true
-                        selectedList.add(item)
+                        if(adapterPosition != NO_POSITION) {
+                            selectedList.add(item)
+                        }
                     } else {
                         checkBox.isChecked = false
                         selectedList.remove(item)
