@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_clientesFragment"
             app:destination="@id/clientesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_estoqueFragment"
+            app:destination="@id/estoqueFragment" />
     </fragment>
     <fragment
         android:id="@+id/vendasFragment"
@@ -27,5 +30,10 @@
         android:name="br.com.example.pind.ClientesFragment"
         android:label="ClientesFragment"
         tools:layout="@layout/activity_clientes"/>
+    <fragment
+        android:id="@+id/estoqueFragment"
+        android:name="br.com.example.pind.EstoqueFragment"
+        android:label="EstoqueFragment"
+        tools:layout="@layout/activity_estoque"/>
 
 </navigation>

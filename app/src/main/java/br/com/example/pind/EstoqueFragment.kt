@@ -1,23 +1,31 @@
 package br.com.example.pind
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class EstoqueActivity : AppCompatActivity() {
+class EstoqueFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_estoque)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_estoque, container, false)
+    }
 
-        val recyclerView = findViewById<RecyclerView>(R.id.rv_estoque)
-        val btnHome = findViewById<ImageView>(R.id.iv_nav_home)
-        val btnLogout = findViewById<ImageView>(R.id.iv_nav_logout)
-        val btnAdd = findViewById<FloatingActionButton>(R.id.add_btn)
-        val btnRemoveEstoque = findViewById<FloatingActionButton>(R.id.remove_btn)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_estoque)
+        val btnAdd =  view.findViewById<FloatingActionButton>(R.id.add_btn)
+        val btnRemoveEstoque =  view.findViewById<FloatingActionButton>(R.id.remove_btn)
         val estoqueDialog = EstoqueDialog()
         val estoqueList = mutableListOf(
             EstoqueListItem("Exemplo", "0kg"),
@@ -26,18 +34,8 @@ class EstoqueActivity : AppCompatActivity() {
 
         recyclerView.adapter = estoqueAdapter
 
-        btnHome.setOnClickListener {
-            val i = Intent(this, HomeFragment::class.java)
-            startActivity(i)
-        }
-
-        btnLogout.setOnClickListener {
-            val i = Intent(this, LoginActivity::class.java)
-            startActivity(i)
-        }
-
         btnAdd.setOnClickListener {
-            estoqueDialog.show(supportFragmentManager, "dialogAdd")
+            estoqueDialog.show(requireActivity().supportFragmentManager, "dialogAdd")
         }
 
         estoqueDialog.onAddItem = {
