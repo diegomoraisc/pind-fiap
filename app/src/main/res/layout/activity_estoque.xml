@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/pind_background"
     android:orientation="vertical"
-    tools:context=".HomeFragment">
+    tools:context=".screens.home.HomeFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_btn"

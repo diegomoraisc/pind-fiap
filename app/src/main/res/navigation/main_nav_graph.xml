@@ -7,9 +7,10 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="br.com.example.pind.HomeFragment"
+        android:name="br.com.example.pind.screens.home.HomeFragment"
         android:label="homeFragment"
         tools:layout="@layout/activity_home">
+
         <action
             android:id="@+id/action_homeFragment_to_vendasFragment"
             app:destination="@id/vendasFragment" />
@@ -23,25 +24,61 @@
             android:id="@+id/action_homeFragment_to_pedidosFragment"
             app:destination="@id/pedidosFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/vendasFragment"
-        android:name="br.com.example.pind.VendasFragment"
+        android:name="br.com.example.pind.screens.vendas.VendasFragment"
         android:label="VendasFragment"
-        tools:layout="@layout/activity_vendas"/>
+        tools:layout="@layout/activity_vendas" />
+
     <fragment
         android:id="@+id/clientesFragment"
-        android:name="br.com.example.pind.ClientesFragment"
+        android:name="br.com.example.pind.screens.clientes.ClientesFragment"
         android:label="ClientesFragment"
-        tools:layout="@layout/activity_clientes"/>
+        tools:layout="@layout/activity_clientes">
+
+        <action
+            android:id="@+id/action_clientesFragment_to_pedidosFinalizadosFragment"
+            app:destination="@id/pedidosFinalizadosFragment"/>
+
+        <action
+            android:id="@+id/action_clientesFragment_to_pedidosAndamentoFragment"
+            app:destination="@id/pedidosAndamentoFragment" />
+
+    </fragment>
+
     <fragment
         android:id="@+id/estoqueFragment"
-        android:name="br.com.example.pind.EstoqueFragment"
+        android:name="br.com.example.pind.screens.estoque.EstoqueFragment"
         android:label="EstoqueFragment"
-        tools:layout="@layout/activity_estoque"/>
+        tools:layout="@layout/activity_estoque" />
+
     <fragment
         android:id="@+id/pedidosFragment"
         android:name="br.com.example.pind.screens.pedidos.PedidosFragment"
         android:label="PedidosFragment"
-        tools:layout="@layout/activity_pedidos"/>
+        tools:layout="@layout/activity_pedidos" />
+
+    <fragment
+        android:id="@+id/pedidosFinalizadosFragment"
+        android:name="br.com.example.pind.screens.pedidos.finalizados.PedidosFinalizadosFragment"
+        android:label="PedidosFinalizadosFragment"
+        tools:layout="@layout/fragment_pedidos_finalizados">
+
+        <argument
+            android:name="clienteId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pedidosAndamentoFragment"
+        android:name="br.com.example.pind.screens.pedidos.andamento.PedidosAndamentoFragment"
+        android:label="PedidosAndamentoFragment"
+        tools:layout="@layout/fragment_pedidos_andamento">
+
+        <argument
+            android:name="clienteId"
+            app:argType="integer"/>
+    </fragment>
 
 </navigation>

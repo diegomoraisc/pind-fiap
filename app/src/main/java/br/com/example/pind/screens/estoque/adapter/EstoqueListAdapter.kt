@@ -1,18 +1,19 @@
-package br.com.example.pind
+package br.com.example.pind.screens.estoque.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import br.com.example.pind.R
+import br.com.example.pind.modal.estoque.EstoqueItem
 
-class EstoqueListAdapter(private val dataList: List<EstoqueListItem>) :
+class EstoqueListAdapter(private val dataList: List<EstoqueItem>) :
     RecyclerView.Adapter<EstoqueListAdapter.EstoqueViewHolder>() {
 
-    var onItemRemoved: ((item: EstoqueListItem) -> Unit)?=null
+    var onItemRemoved: ((item: EstoqueItem) -> Unit)?=null
     private var isEnable: Boolean = false
 
     inner class EstoqueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -20,7 +21,7 @@ class EstoqueListAdapter(private val dataList: List<EstoqueListItem>) :
         val quantidade = itemView.findViewById<TextView>(R.id.quantity_content)
         val btnRemoveEstoque = itemView.findViewById<ImageView>(R.id.remove_estoque_btn)
 
-        fun bind(item: EstoqueListItem) {
+        fun bind(item: EstoqueItem) {
             btnRemoveEstoque.setOnClickListener{
                 onItemRemoved?.invoke(item)
             }
@@ -30,7 +31,7 @@ class EstoqueListAdapter(private val dataList: List<EstoqueListItem>) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): EstoqueListAdapter.EstoqueViewHolder {
+    ): EstoqueViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_estoque_list_item, parent, false)
         return EstoqueViewHolder(view)
@@ -38,10 +39,10 @@ class EstoqueListAdapter(private val dataList: List<EstoqueListItem>) :
 
     override fun getItemCount(): Int = dataList.size
 
-    override fun onBindViewHolder(holder: EstoqueListAdapter.EstoqueViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EstoqueViewHolder, position: Int) {
         val item = dataList[position]
-        holder.produto.text = item.produto
-        holder.quantidade.text = item.quantidade
+        holder.produto.text = item.productName
+        holder.quantidade.text = item.quantity
         holder.btnRemoveEstoque.isVisible = isEnable
         holder.bind(item)
     }

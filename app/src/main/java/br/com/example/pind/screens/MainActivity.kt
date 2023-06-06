@@ -1,4 +1,4 @@
-package br.com.example.pind
+package br.com.example.pind.screens
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,8 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import br.com.example.pind.R
+import br.com.example.pind.screens.login.LoginActivity
 
 class MainActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

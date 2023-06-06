@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background_estoque_dialog"
     android:gravity="center"
     android:orientation="vertical"
@@ -12,29 +12,51 @@
         android:id="@+id/iv_fechar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_close"
-        android:layout_gravity="end"/>
+        android:layout_gravity="end"
+        app:srcCompat="@drawable/ic_close" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingVertical="8dp"
         android:paddingHorizontal="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/produto"
+            android:text="@string/nome_do_cliente"
             android:textSize="15sp"
-            android:textStyle="bold">
+            android:textStyle="bold"/>
 
-        </TextView>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_produto"
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spn_nome_cliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:layout_marginHorizontal="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nome_do_produto"
             android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spn_nome_produto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
             android:layout_marginHorizontal="5dp" />
 
     </LinearLayout>
@@ -50,15 +72,12 @@
             android:layout_height="wrap_content"
             android:text="@string/quantidade"
             android:textSize="15sp"
-            android:textStyle="bold">
-
-        </TextView>
+            android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_quantidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
             android:layout_marginHorizontal="5dp" />
 
     </LinearLayout>
@@ -72,74 +91,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/data_de_fabrica_o"
+            android:text="@string/valor_total_r"
             android:textSize="15sp"
-            android:textStyle="bold">
-
-        </TextView>
+            android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_data_fabricação"
+            android:id="@+id/et_total_valor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:layout_marginHorizontal="5dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingHorizontal="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/data_de_validade"
-            android:textSize="15sp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_data_validade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:layout_marginHorizontal="5dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingHorizontal="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/unidade_de_medida"
-            android:textSize="15sp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_unidade_medida"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
             android:layout_marginHorizontal="5dp" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_add_product"
+        android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:text="@string/adicionar_produto" />
+        android:text="@string/adicionar" />
 
 </LinearLayout>

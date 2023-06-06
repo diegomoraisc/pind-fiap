@@ -12,19 +12,19 @@
         android:theme="@style/Theme.Pind"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".screens.MainActivity"
             android:exported="false" />
         <activity
             android:name=".ClienteActivity"
             android:exported="false" />
         <activity
-            android:name=".EstoqueFragment"
+            android:name=".screens.estoque.EstoqueFragment"
             android:exported="false" />
         <activity
-            android:name=".CadastroActivity"
+            android:name=".screens.cadastro.CadastroActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".screens.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

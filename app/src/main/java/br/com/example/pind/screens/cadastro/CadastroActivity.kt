@@ -1,7 +1,8 @@
-package br.com.example.pind
+package br.com.example.pind.screens.cadastro
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.example.pind.R
 
 class CadastroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

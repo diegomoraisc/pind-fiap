@@ -24,4 +24,14 @@
     <string name="adicionar_cliente">Adicionar cliente</string>
     <string name="pedidos">Pedidos:</string>
     <string name="finalizados">Finalizados:</string>
+    <string name="pedidos_finalizados">Pedidos Finalizados</string>
+    <string name="vendas">Vendas</string>
+    <string name="pedidos_em_andamento">Pedidos em andamento</string>
+    <string name="concluir_pedido">Concluir Pedido</string>
+    <string name="adicionar_produto">Adicionar produto</string>
+    <string name="data_de_fabrica_o">Data de fabricação:</string>
+    <string name="data_de_validade">Data de validade:</string>
+    <string name="unidade_de_medida">Unidade de medida:</string>
+    <string name="nome_do_produto">Nome do produto:</string>
+    <string name="valor_total_r">Valor total R$</string>
 </resources>

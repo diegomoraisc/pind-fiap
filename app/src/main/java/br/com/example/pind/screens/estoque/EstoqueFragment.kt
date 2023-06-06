@@ -1,15 +1,16 @@
-package br.com.example.pind
+package br.com.example.pind.screens.estoque
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import br.com.example.pind.screens.estoque.adapter.EstoqueListAdapter
+import br.com.example.pind.R
+import br.com.example.pind.modal.estoque.EstoqueItem
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlin.random.Random
 
 class EstoqueFragment : Fragment() {
 
@@ -27,8 +28,17 @@ class EstoqueFragment : Fragment() {
         val btnAdd =  view.findViewById<FloatingActionButton>(R.id.add_btn)
         val btnRemoveEstoque =  view.findViewById<FloatingActionButton>(R.id.remove_btn)
         val estoqueDialog = EstoqueDialog()
+
+        // lista mockada
         val estoqueList = mutableListOf(
-            EstoqueListItem("Exemplo", "0kg"),
+            EstoqueItem(
+                Random.nextInt().toString(),
+                "Exemplo",
+                "0",
+                "05/06/2023",
+                "08/06/2023",
+                "Kg"
+            )
         )
         val estoqueAdapter = EstoqueListAdapter(estoqueList)
 

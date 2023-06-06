@@ -1,4 +1,4 @@
-package br.com.example.pind
+package br.com.example.pind.screens.clientes.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,30 +9,32 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import br.com.example.pind.R
+import br.com.example.pind.modal.cliente.PedidoCliente
 
-class ClientesListAdapter(private val dataList: List<Cliente>) :
+class ClientesListAdapter(private val dataList: List<PedidoCliente>) :
     RecyclerView.Adapter<ClientesListAdapter.ClientesViewHolder>() {
 
 
-    var onItemClicked: ((cliente: Cliente) -> Unit)? = null
-    var onClickFinalizados: ((cliente: Cliente) -> Unit)? = null
-    var onClickEmAndamento: ((cliente: Cliente) -> Unit)? = null
+    var onItemClicked: ((cliente: PedidoCliente) -> Unit)? = null
+    var onClickFinalizados: ((cliente: PedidoCliente) -> Unit)? = null
+    var onClickEmAndamento: ((cliente: PedidoCliente) -> Unit)? = null
     var onCheckBoxEnabled: (() -> Unit)? = null
     var isEnabled: Boolean = false
     var clearCheckBox: Boolean = false
-    val selectedList = mutableListOf<Cliente>()
+    val selectedList = mutableListOf<PedidoCliente>()
 
     inner class ClientesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nomeCliente = itemView.findViewById<TextView>(R.id.client_name)
-        val primeiraCompra = itemView.findViewById<TextView>(R.id.primeira_compra_data)
-        val ultimaCompra = itemView.findViewById<TextView>(R.id.ultima_compra_data)
-        val btnFinalizados = itemView.findViewById<Button>(R.id.btn_finalizados)
-        val btnEmAndamento = itemView.findViewById<Button>(R.id.btn_em_andamento)
-        val card = itemView.findViewById<ConstraintLayout>(R.id.card_clientes)
-        val checkBox = itemView.findViewById<CheckBox>(R.id.clientes_checkBox)
+        val nomeCliente: TextView = itemView.findViewById(R.id.client_name)
+        val primeiraCompra: TextView = itemView.findViewById(R.id.primeira_compra_data)
+        val ultimaCompra: TextView = itemView.findViewById(R.id.ultima_compra_data)
+        val btnFinalizados: Button = itemView.findViewById(R.id.btn_finalizados)
+        val btnEmAndamento: Button = itemView.findViewById(R.id.btn_em_andamento)
+        val card: ConstraintLayout = itemView.findViewById(R.id.card_clientes)
+        val checkBox: CheckBox = itemView.findViewById(R.id.clientes_checkBox)
 
 
-        fun bind(item: Cliente) {
+        fun bind(item: PedidoCliente) {
             card.setOnLongClickListener {
                 isEnabled = true
                 checkBox.isVisible = isEnabled
@@ -65,7 +67,7 @@ class ClientesListAdapter(private val dataList: List<Cliente>) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ClientesListAdapter.ClientesViewHolder {
+    ): ClientesViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_clientes_list_item, parent, false)
         return ClientesViewHolder(view)
@@ -73,7 +75,7 @@ class ClientesListAdapter(private val dataList: List<Cliente>) :
 
     override fun getItemCount(): Int = dataList.size
 
-    override fun onBindViewHolder(holder: ClientesListAdapter.ClientesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ClientesViewHolder, position: Int) {
         val item = dataList[position]
         holder.nomeCliente.text = item.nomeCliente
         holder.primeiraCompra.text = item.dataPrimeiraCompra
