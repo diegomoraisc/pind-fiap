@@ -1,4 +1,4 @@
-package br.com.example.pind.api.services
+package br.com.example.pind.modal.cliente.services
 
 
 import br.com.example.pind.api.models.ClientsModel

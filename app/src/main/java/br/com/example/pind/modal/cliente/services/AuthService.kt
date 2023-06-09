@@ -1,4 +1,4 @@
-package br.com.example.pind.api.services
+package br.com.example.pind.modal.cliente.services
 
 import br.com.example.pind.api.models.AuthModel
 import br.com.example.pind.api.models.LoginResponse
@@ -13,7 +13,7 @@ interface AuthService {
     @POST("sessions")
     fun athenticate(@Body requestBody: AuthModel) : Call<LoginResponse>
 
-    @POST("sessions")
+    @POST("users")
     fun register(@Body requestBody: RegisterModel) : Call<LoginResponse>
 
 }

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.example.pind.R
 import br.com.example.pind.api.caller.ProductsCaller
 import br.com.example.pind.api.models.ProductModel
-import br.com.example.pind.api.services.ProductsService
+import br.com.example.pind.modal.cliente.services.ProductsService
 import br.com.example.pind.screens.estoque.adapter.EstoqueListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call

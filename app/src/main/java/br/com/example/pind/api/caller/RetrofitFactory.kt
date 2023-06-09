@@ -1,6 +1,6 @@
 package br.com.example.pind.api.caller
 
-import br.com.example.pind.api.services.ProductsService
+import br.com.example.pind.modal.cliente.services.ProductsService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

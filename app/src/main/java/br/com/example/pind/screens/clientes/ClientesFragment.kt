@@ -33,6 +33,7 @@ class ClientesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_clientes)
 
+
         btnAdd = view.findViewById(R.id.btn_add_clientes)
         btnRemove = view.findViewById(R.id.btn_remove_clientes)
         btnCancel = view.findViewById(R.id.btn_cancel_clientes)

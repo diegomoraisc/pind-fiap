@@ -2,7 +2,7 @@ package br.com.example.pind.api.caller
 
 import android.content.Context
 import br.com.example.pind.BuildConfig
-import br.com.example.pind.api.services.ProductsService
+import br.com.example.pind.modal.cliente.services.ProductsService
 import br.com.example.pind.api.caller.RetrofitFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

@@ -16,8 +16,8 @@ import br.com.example.pind.api.caller.PreferencesHelper
 import br.com.example.pind.api.caller.ProductsCaller
 import br.com.example.pind.api.models.AuthModel
 import br.com.example.pind.api.models.LoginResponse
-import br.com.example.pind.api.services.AuthService
-import br.com.example.pind.api.services.Token
+import br.com.example.pind.modal.cliente.services.AuthService
+import br.com.example.pind.modal.cliente.services.Token
 import retrofit2.*
 
 class LoginActivity : AppCompatActivity() {
@@ -33,7 +33,6 @@ class LoginActivity : AppCompatActivity() {
 
         val btnLogin = findViewById<Button>(R.id.btn_login)
         val btnCadastro = findViewById<TextView>(R.id.btn_cadastro)
-
         btnLogin.setOnClickListener {
             val textEmail: EditText = findViewById(R.id.email_input_text)
             val textPass: EditText = findViewById(R.id.password_input_text)
@@ -67,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
+
 
         btnCadastro.setOnClickListener {
             val i = Intent(this, CadastroActivity::class.java)
