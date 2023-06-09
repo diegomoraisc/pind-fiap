@@ -4,31 +4,38 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import br.com.example.pind.api.caller.ProductsCaller
+import br.com.example.pind.api.models.ProductModel
+import br.com.example.pind.api.services.ProductsService
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class EstoqueActivity : AppCompatActivity() {
 
+
+    var estoqueAdapter : EstoqueListAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_estoque)
+        getProduct()
 
-        val recyclerView = findViewById<RecyclerView>(R.id.rv_estoque)
         val btnHome = findViewById<ImageView>(R.id.iv_nav_home)
         val btnLogout = findViewById<ImageView>(R.id.iv_nav_logout)
         val btnAdd = findViewById<FloatingActionButton>(R.id.add_btn)
         val btnRemoveEstoque = findViewById<FloatingActionButton>(R.id.remove_btn)
         val estoqueDialog = EstoqueDialog()
-        val estoqueList = mutableListOf(
-            EstoqueListItem("Exemplo", "0kg"),
-        )
-        val estoqueAdapter = EstoqueListAdapter(estoqueList)
 
-        recyclerView.adapter = estoqueAdapter
+
+
+
 
         btnHome.setOnClickListener {
-            val i = Intent(this, HomeFragment::class.java)
-            startActivity(i)
+           finish()
         }
 
         btnLogout.setOnClickListener {
@@ -41,22 +48,37 @@ class EstoqueActivity : AppCompatActivity() {
         }
 
         estoqueDialog.onAddItem = {
-            estoqueList.add(it)
-            estoqueAdapter.notifyItemInserted(estoqueList.indexOf(it))
+            getProduct()
         }
 
         btnRemoveEstoque.setOnClickListener {
-            estoqueAdapter.onRemoveEnable()
-            estoqueAdapter.notifyItemRangeChanged(
-                estoqueList.indexOfFirst { true },
-                estoqueList.size
-            )
+
         }
 
-        estoqueAdapter.onItemRemoved = {
-            val index = estoqueList.indexOf(it)
-            estoqueList.remove(it)
-            estoqueAdapter.notifyItemRemoved(index)
-        }
+    }
+
+    fun getProduct(){
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_estoque)
+        val call = ProductsCaller(this)
+            .productsService()
+            .create(ProductsService :: class.java)
+            .getProduct()
+
+        call.enqueue(object : Callback<List<ProductModel>>{
+            override fun onResponse(
+                call: Call<List<ProductModel>>,
+                response: Response<List<ProductModel>>
+            ) {
+                if(response.isSuccessful){
+                    estoqueAdapter = response.body()?.let { EstoqueListAdapter(it) }
+                    recyclerView.adapter = estoqueAdapter
+                }
+            }
+
+            override fun onFailure(call: Call<List<ProductModel>>, t: Throwable) {
+
+            }
+
+        })
     }
 }

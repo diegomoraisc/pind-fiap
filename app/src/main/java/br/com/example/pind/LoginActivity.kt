@@ -8,32 +8,35 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import br.com.example.pind.api.caller.AuthCaller
+import androidx.core.content.ContentProviderCompat.requireContext
+import br.com.example.pind.api.caller.PreferencesHelper
+import br.com.example.pind.api.caller.ProductsCaller
 import br.com.example.pind.api.models.AuthModel
 import br.com.example.pind.api.models.LoginResponse
+import br.com.example.pind.api.services.AuthService
 import br.com.example.pind.api.services.Token
-import com.google.android.material.textfield.TextInputLayout
-import retrofit2.Call
-import retrofit2.CallAdapter
-import retrofit2.Callback
-import retrofit2.Response
+import retrofit2.*
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
+        val preferenceHelper = PreferencesHelper(this@LoginActivity)
+        if (preferenceHelper.getRefreshToken() != null){
+            val i = Intent(this, MainActivity::class.java)
+            startActivity(i)
+        }
 
         val btnLogin = findViewById<Button>(R.id.btn_login)
         val btnCadastro = findViewById<TextView>(R.id.btn_cadastro)
 
         btnLogin.setOnClickListener {
-            val textEmail: TextInputLayout = findViewById(R.id.email_input)
-            val textPass: TextInputLayout = findViewById(R.id.password_input)
+            val textEmail: EditText = findViewById(R.id.email_input_text)
+            val textPass: EditText = findViewById(R.id.password_input_text)
 
-            val request = AuthModel(textEmail.toString(), textPass.toString())
-            val call = AuthCaller().authService().athenticate(request)
+            val request = AuthModel(textEmail.text.toString(), textPass.text.toString())
+            val call = ProductsCaller(this).productsService().create(AuthService :: class.java).athenticate(request)
 
             call.enqueue(object: Callback<LoginResponse>{
                 override fun onResponse(
@@ -45,20 +48,21 @@ class LoginActivity : AppCompatActivity() {
                         if(loginResponse == null){
                             Toast.makeText(applicationContext, "erro no servidor", Toast.LENGTH_SHORT).show()
                         }
-                        if(loginResponse?.token != "" && loginResponse != null){
-                            Token.staticToken = loginResponse.token
-                            Log.i("token", Token.staticToken)
+                        if(loginResponse?.refreshToken != "" && loginResponse != null){
+                            preferenceHelper.setRefreshToken(loginResponse.refreshToken)
+                            val i = Intent(this@LoginActivity, MainActivity::class.java)
+                            startActivity(i)
                         }
+
                     }
                 }
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.e("err", t.message.toString())
                 }
 
             })
 
-            val i = Intent(this, MainActivity::class.java)
-            startActivity(i)
+
         }
 
         btnCadastro.setOnClickListener {

@@ -13,13 +13,15 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatDialogFragment
 import br.com.example.pind.api.caller.ProductsCaller
 import br.com.example.pind.api.models.ProductModel
+import br.com.example.pind.api.services.ProductsService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.create
 
 class EstoqueDialog : AppCompatDialogFragment() {
 
-    var onAddItem: ((item: EstoqueListItem) -> Unit)? = null
+    var onAddItem: (() -> Unit)? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,24 +49,29 @@ class EstoqueDialog : AppCompatDialogFragment() {
         val textMeasurement = view.findViewById<EditText>(R.id.unit_measurement)
 
         btnAddProduct.setOnClickListener {
-            val call = ProductsCaller().productsService().getProduct()
-            call.enqueue(object : Callback<List<ProductModel>> {
+            val call = ProductsCaller(requireContext()).productsService().create(ProductsService :: class.java).postProduct(ProductModel(
+                textProduct.text.toString(),
+                textPrice.text.toString().toInt(),
+                textQuantity.text.toString().toInt(),
+                textMeasurement.text.toString()
+            ))
+            call.enqueue(object : Callback<ProductModel> {
                     override fun onResponse(
-                        call: Call<List<ProductModel>>,
-                        response: Response<List<ProductModel>>
+                        call: Call<ProductModel>,
+                        response: Response<ProductModel>
                     ) {
                         response.body()?.let {
                             Log.i("Product", it.toString())
+                            onAddItem?.invoke()
                         }
                     }
-                    override fun onFailure(call: Call<List<ProductModel>>, t: Throwable) {
+                    override fun onFailure(call: Call<ProductModel>, t: Throwable) {
                         t?.message?.let { it1 -> Log.e("Erro", it1) }
 
                     }
 
             }
             )
-            onAddItem?.invoke(EstoqueListItem(textProduct.text.toString(), textQuantity.text.toString()))
             dismiss()
         }
 

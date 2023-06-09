@@ -8,11 +8,12 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import br.com.example.pind.api.models.ProductModel
 
-class EstoqueListAdapter(private val dataList: List<EstoqueListItem>) :
+class EstoqueListAdapter(private val dataList: List<ProductModel>) :
     RecyclerView.Adapter<EstoqueListAdapter.EstoqueViewHolder>() {
 
-    var onItemRemoved: ((item: EstoqueListItem) -> Unit)?=null
+    var onItemRemoved: ((item: ProductModel) -> Unit)?=null
     private var isEnable: Boolean = false
 
     inner class EstoqueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -20,7 +21,7 @@ class EstoqueListAdapter(private val dataList: List<EstoqueListItem>) :
         val quantidade = itemView.findViewById<TextView>(R.id.quantity_content)
         val btnRemoveEstoque = itemView.findViewById<ImageView>(R.id.remove_estoque_btn)
 
-        fun bind(item: EstoqueListItem) {
+        fun bind(item: ProductModel) {
             btnRemoveEstoque.setOnClickListener{
                 onItemRemoved?.invoke(item)
             }
@@ -40,8 +41,8 @@ class EstoqueListAdapter(private val dataList: List<EstoqueListItem>) :
 
     override fun onBindViewHolder(holder: EstoqueListAdapter.EstoqueViewHolder, position: Int) {
         val item = dataList[position]
-        holder.produto.text = item.produto
-        holder.quantidade.text = item.quantidade
+        holder.produto.text = item.nome
+        holder.quantidade.text = item.quantidade.toString()
         holder.btnRemoveEstoque.isVisible = isEnable
         holder.bind(item)
     }
