@@ -48,37 +48,22 @@ class EstoqueActivity : AppCompatActivity() {
         }
 
         estoqueDialog.onAddItem = {
-            getProduct()
+            estoqueList.add(it)
+            estoqueAdapter.notifyItemInserted(estoqueList.indexOf(it))
         }
 
         btnRemoveEstoque.setOnClickListener {
-
+            estoqueAdapter.onRemoveEnable()
+            estoqueAdapter.notifyItemRangeChanged(
+                estoqueList.indexOfFirst { true },
+                estoqueList.size
+            )
         }
 
-    }
-
-    fun getProduct(){
-        val recyclerView = findViewById<RecyclerView>(R.id.rv_estoque)
-        val call = ProductsCaller(this)
-            .productsService()
-            .create(ProductsService :: class.java)
-            .getProduct()
-
-        call.enqueue(object : Callback<List<ProductModel>>{
-            override fun onResponse(
-                call: Call<List<ProductModel>>,
-                response: Response<List<ProductModel>>
-            ) {
-                if(response.isSuccessful){
-                    estoqueAdapter = response.body()?.let { EstoqueListAdapter(it) }
-                    recyclerView.adapter = estoqueAdapter
-                }
-            }
-
-            override fun onFailure(call: Call<List<ProductModel>>, t: Throwable) {
-
-            }
-
-        })
+        estoqueAdapter.onItemRemoved = {
+            val index = estoqueList.indexOf(it)
+            estoqueList.remove(it)
+            estoqueAdapter.notifyItemRemoved(index)
+        }
     }
 }

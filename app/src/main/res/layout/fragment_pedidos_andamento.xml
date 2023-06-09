@@ -6,12 +6,12 @@
     android:background="@color/pind_background">
 
     <TextView
-        android:id="@+id/tv_vendas"
+        android:id="@+id/tv_pedidos_andamentos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:paddingVertical="5dp"
-        android:text="@string/vendas"
+        android:text="@string/pedidos_em_andamento"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -20,16 +20,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
         android:background="@drawable/background_estoque_list"
         android:paddingTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_vendas"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pedidos_andamentos"
         tools:layout_editor_absoluteX="5dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_vendas"
+            android:id="@+id/rv_pedidos_andamentos"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/white"
@@ -42,53 +40,24 @@
             tools:listitem="@layout/layout_vendas_list_item" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="15dp"
-            android:id="@+id/cl_buttons">
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <Button
-                android:id="@+id/btn_add_vendas"
+                android:id="@+id/btn_concluir_pedidos"
                 style="@style/Button.Basic.Red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/adicionar"
-                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/concluir_pedido"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_remove_vendas"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
-                android:id="@+id/btn_remove_vendas"
-                style="@style/Button.Basic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/remover"
-                android:foregroundTint="@color/pind_red"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_add_vendas"
-                app:layout_constraintEnd_toStartOf="@id/btn_cancel"
-                app:layout_constraintStart_toEndOf="@+id/btn_add_vendas"
-                app:layout_constraintTop_toTopOf="@+id/btn_add_vendas" />
-
-            <Button
-                android:id="@+id/btn_cancel"
-                style="@style/Button.Basic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/cancelar"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_remove_vendas"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_remove_vendas"
-                app:layout_constraintTop_toTopOf="@+id/btn_remove_vendas" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

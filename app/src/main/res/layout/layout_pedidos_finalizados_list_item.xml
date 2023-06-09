@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_pedidos_finalizados"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintEnd_toStartOf="@+id/vendas_checkBox"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/pedidos_finalizados_client"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/pind_green"
+            android:textStyle="bold"
+            tools:text="Cliente X" />
+
+        <LinearLayout
+            android:id="@+id/ly_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/ly_quantity"
+            app:layout_constraintEnd_toStartOf="@id/remove_estoque_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <TextView
+                android:id="@+id/product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:text="@string/produto"
+                android:textColor="@color/pind_green"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pedidos_finalizados_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Nome do produto" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/remove_estoque_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ly_product">
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:text="@string/quantidade"
+                android:textColor="@color/pind_green"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pedidos_finalizados_quantity_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Quantidade" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/ly_quantity"
+            app:layout_constraintEnd_toStartOf="@id/remove_estoque_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <TextView
+                android:id="@+id/value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:text="@string/valor_total"
+                android:textColor="@color/pind_green"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pedidos_finalizados_total_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="1000" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/pedidos_finalizados_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/pind_green"
+            android:textStyle="bold"
+            tools:text="14/06/2023" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:alpha="0.5"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <CheckBox
+        android:id="@+id/vendas_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

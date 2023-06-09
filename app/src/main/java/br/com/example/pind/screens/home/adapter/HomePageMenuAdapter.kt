@@ -1,4 +1,4 @@
-package br.com.example.pind
+package br.com.example.pind.screens.home.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import br.com.example.pind.R
+import br.com.example.pind.modal.menu.HomeMenuItem
 
 class HomePageMenuAdapter(private val dataList: List<HomeMenuItem>) :
     RecyclerView.Adapter<HomePageMenuAdapter.HomePageViewHolder>() {
@@ -28,7 +30,7 @@ class HomePageMenuAdapter(private val dataList: List<HomeMenuItem>) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): HomePageMenuAdapter.HomePageViewHolder {
+    ): HomePageViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_home_list_item, parent, false)
         return HomePageViewHolder(view)
@@ -36,7 +38,7 @@ class HomePageMenuAdapter(private val dataList: List<HomeMenuItem>) :
 
     override fun getItemCount(): Int = dataList.size
 
-    override fun onBindViewHolder(holder: HomePageMenuAdapter.HomePageViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomePageViewHolder, position: Int) {
         val item = dataList[position]
         holder.title.text = item.title
         holder.image.setImageResource(item.image)

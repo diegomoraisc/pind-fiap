@@ -1,4 +1,4 @@
-package br.com.example.pind
+package br.com.example.pind.modal.menu
 
 data class HomeMenuItem (
     val id: Int,

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/pind_background"
     android:orientation="vertical"
-    tools:context=".HomeFragment">
+    tools:context=".screens.home.HomeFragment">
 
 
     <TextView
@@ -50,6 +50,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="15dp"
+            android:paddingTop="8dp"
             android:id="@+id/cl_buttons">
 
             <Button

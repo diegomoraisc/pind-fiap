@@ -9,7 +9,7 @@
     android:gravity="center|top"
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
-    tools:context=".LoginActivity">
+    tools:context=".screens.login.LoginActivity">
 
     <ImageView
         android:id="@+id/pind_logo"
